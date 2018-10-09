@@ -22,5 +22,9 @@ export const searchCharactersError = error => ({
 
 export const searchCharacters = name => dispatch => {
     // TODO: dipatch our request and handle success and failure actions on response
+    dispatch(searchCharactersRequest());
+    return search(name)
+    .then(res => dispatch(searchCharactersSuccess(res)))
+    .catch(err => dispatch(searchCharactersError(err)));
 };
 
